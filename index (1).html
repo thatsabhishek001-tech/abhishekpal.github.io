@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abhishek Pal | Blockchain Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0707;--ash:#1a1413;--bone:#e8dfd0;--blood:#a3101a;--ember:#e2531f;--steel:#8b929a;--bg:var(--ink);
+ --display:'UnifrakturCook','Old English Text MT',Georgia,serif;--body:'IM Fell English',Georgia,'Times New Roman',serif;
+ color-scheme:dark;box-sizing:border-box}
+:root:not([data-theme="light"]){color-scheme:dark}
+:root[data-theme="dark"]{color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:var(--ink)}}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--bone);font-family:var(--body);font-size:1.15rem;line-height:1.7;overflow-x:hidden;transition:background 1.2s;min-height:100svh;display:flex;flex-direction:column}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+body.eclipse{--bg:#240205}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+[hidden]{display:none!important}
+#embers{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+#corona{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.4s;background:radial-gradient(circle at 70% 38%,#000 0 15%,#ffb347 15.4% 16.2%,#e2531f 17% 20%,rgba(163,16,26,.55) 30%,transparent 55%)}
+body.eclipse #corona{opacity:1}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem 1.5rem;background:linear-gradient(var(--bg),transparent);flex-wrap:wrap}
+nav .logo{font-family:var(--display);font-size:1.9rem;text-decoration:none;text-shadow:2px 2px 0 var(--blood)}
+nav ul{list-style:none;display:flex;gap:1.3rem;margin:0;padding:0;flex-wrap:wrap}
+nav li a{text-decoration:none;font-size:1.05rem;padding:.2rem 0;border-bottom:2px solid transparent;transition:border-color .2s,color .2s}
+nav li a:hover{color:var(--ember)}
+nav li a[aria-current="page"]{border-color:var(--blood)}
+main,footer{position:relative;z-index:2}
+main{flex:1}
+.view{padding:7rem 1.5rem 4rem;max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.05}
+h2{font-size:clamp(2.6rem,7vw,4.5rem);margin-bottom:2.5rem;text-shadow:3px 3px 0 var(--blood)}
+h3{font-size:1.9rem}
+p{max-width:62ch}
+.hero{min-height:calc(100svh - 7rem);display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero h1{font-size:clamp(3.4rem,13vw,9rem);position:relative;z-index:3;text-shadow:5px 5px 0 var(--blood)}
+.go-in .hero h1{clip-path:inset(0 100% 0 0);animation:reveal 1s .5s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes reveal{to{clip-path:inset(0 0 0 0)}}
+.hero .role{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.6rem);color:var(--ember);margin:.8rem 0 0;position:relative;z-index:3}
+.hero .tag{font-size:clamp(1.15rem,2.4vw,1.6rem);max-width:32ch;margin:1.2rem 0 2.2rem;position:relative;z-index:3;font-style:italic;color:#cfc4b2}
+.btn{display:inline-block;font-family:var(--display);font-size:1.5rem;text-decoration:none;color:var(--bone);background:var(--blood);padding:.6rem 2rem;clip-path:polygon(0 12%,6% 0,94% 6%,100% 0,97% 88%,100% 100%,5% 94%,0 100%);transition:background .2s,transform .2s;position:relative;z-index:3}
+.btn:hover{background:var(--ember);transform:translateX(6px)}
+.sword{position:absolute;right:-2%;top:-4%;height:108%;z-index:2;transform:rotate(14deg);opacity:.9;filter:drop-shadow(0 0 30px rgba(163,16,26,.45))}
+.brand{position:absolute;right:16%;top:10%;width:clamp(80px,14vw,150px);z-index:3;animation:pulse 3.2s ease-in-out infinite;filter:drop-shadow(0 0 12px var(--blood))}
+@keyframes pulse{50%{filter:drop-shadow(0 0 28px var(--ember));transform:scale(1.07)}}
+.behelit{position:absolute;left:0;bottom:0;z-index:4;background:none;border:0;cursor:pointer;padding:0;color:var(--bone);font:inherit;text-align:left;display:flex;align-items:center;gap:1rem}
+.behelit svg{width:60px;height:auto;transition:transform .5s,filter .5s;filter:drop-shadow(0 0 8px var(--blood))}
+.behelit:hover svg{transform:rotate(-8deg) scale(1.12);filter:drop-shadow(0 0 22px var(--ember))}
+.behelit[aria-pressed="true"] svg{transform:scale(1.25);filter:drop-shadow(0 0 30px #ff3b1f)}
+.behelit span{max-width:17ch;font-size:1rem;line-height:1.3;font-style:italic}
+.shake{animation:shake .7s}
+@keyframes shake{10%,50%,90%{transform:translate(-8px,3px)}30%,70%{transform:translate(8px,-4px)}}
+.about{display:grid;gap:2.5rem}
+@media(min-width:800px){.about{grid-template-columns:1.4fr 1fr;align-items:start}}
+.scar{border-left:4px solid var(--blood);padding:.4rem 0 .4rem 1.5rem;font-size:1.3rem;font-style:italic;color:#d8cdbb}
+.facts{list-style:none;margin:0;padding:0}
+.facts li{border-bottom:1px solid #3a2a28;padding:.7rem 0;display:flex;justify-content:space-between;gap:1rem}
+.facts b{font-weight:400;color:var(--steel)}
+.skills{display:grid;gap:1.4rem}
+.skill{display:grid;grid-template-columns:10rem 1fr;gap:1rem;align-items:center}
+@media(max-width:560px){.skill{grid-template-columns:1fr;gap:.3rem}}
+.bar{height:14px;background:#241a19;clip-path:polygon(0 0,100% 0,100% 50%,98% 100%,0 100%)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blood),var(--ember));clip-path:polygon(0 0,100% 0,96% 100%,0 100%);transition:width 1.1s .6s cubic-bezier(.2,.8,.2,1)}
+.on .bar i{width:var(--w)}
+.cards{display:grid;gap:2rem}
+.card{background:var(--ash);padding:2rem 1.8rem;border-left:5px solid var(--blood);clip-path:polygon(0 0,98% 0,100% 3%,100% 100%,3% 100%,0 97%)}
+.card small{display:block;color:var(--steel);margin:.3rem 0 1rem}
+.card p{color:#cfc4b2;margin:.5rem 0 1.2rem}
+.card details{margin-top:1rem}
+.card summary{cursor:pointer;font-family:var(--display);font-size:1.4rem;color:var(--ember);list-style:none}
+.card summary::-webkit-details-marker{display:none}
+.card summary::before{content:"\2020  "}
+.card pre{background:#0a0707;border:1px solid #3a2a28;padding:1rem;overflow-x:auto;font-size:.82rem;line-height:1.5;color:#d9cfbf;margin:1rem 0 .6rem;font-family:ui-monospace,Menlo,Consolas,monospace;tab-size:4}
+.row{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center}
+.row button,.row a{font-family:var(--display);font-size:1.3rem;color:var(--ember);background:none;border:0;cursor:pointer;padding:0;text-decoration:none}
+.row button:hover,.row a:hover{text-decoration:underline}
+.timeline{list-style:none;margin:0;padding:0 0 0 2rem;border-left:3px solid var(--blood);display:grid;gap:3rem}
+.timeline li{position:relative}
+.timeline li::before{content:"";position:absolute;left:calc(-2rem - 10px);top:.7rem;width:17px;height:17px;background:var(--bone);transform:rotate(45deg);border:3px solid var(--blood)}
+.timeline time{color:var(--ember);font-style:italic}
+.timeline p{margin:.3rem 0 0}
+.contact{text-align:center}
+.contact h2{font-size:clamp(3rem,10vw,7rem)}
+.contact p{margin:0 auto 2.5rem}
+.row.c{justify-content:center}
+.row.c a.btn{font-size:1.5rem;color:var(--bone)}
+footer{text-align:center;padding:2.5rem 1.5rem calc(3rem + env(safe-area-inset-bottom,0px));color:var(--steel);font-style:italic;border-top:1px solid #2c1f1e}
+#slash{position:fixed;inset:0;z-index:100;pointer-events:none;visibility:hidden}
+#slash .fill{position:absolute;inset:0;background:#050303;display:grid;place-items:center;clip-path:polygon(0 0,0 0,0 100%,0 100%)}
+#slash .fill b{font-family:var(--display);font-size:clamp(3rem,12vw,8rem);color:var(--bone);text-shadow:5px 5px 0 var(--blood)}
+#slash .cut{position:absolute;left:-20%;top:48%;width:140%;height:7px;background:#fff;box-shadow:0 0 24px 6px var(--blood),0 0 60px 14px var(--ember);transform:rotate(-24deg) translateX(-120%)}
+#slash.go{visibility:visible}
+#slash.go .fill{animation:wipe .95s cubic-bezier(.7,0,.3,1) forwards}
+#slash.go .cut{animation:cut .45s ease-out forwards}
+@keyframes wipe{0%{clip-path:polygon(0 0,0 0,0 100%,0 100%)}45%{clip-path:polygon(0 0,135% 0,100% 100%,0 100%)}55%{clip-path:polygon(0 0,135% 0,100% 100%,0 100%)}100%{clip-path:polygon(140% 0,140% 0,105% 100%,105% 100%)}}
+@keyframes cut{to{transform:rotate(-24deg) translateX(120%)}}
+@media(prefers-reduced-motion:reduce){.go-in .hero h1{animation:none;clip-path:none}.brand,.shake{animation:none}.bar i{transition:none}#slash{display:none}}
+@media(max-width:700px){.sword{opacity:.3;right:-25%}.brand{right:6%;top:4%}nav{padding:.5rem 1rem}nav ul{gap:.9rem}nav li a{font-size:.95rem}}
+</style>
+</head>
+<body>
+<div id="corona"></div>
+<canvas id="embers" aria-hidden="true"></canvas>
+<div id="slash" aria-hidden="true"><div class="fill"><b id="slashName"></b></div><div class="cut"></div></div>
+
+<nav aria-label="Main">
+ <a class="logo" href="#home" aria-label="Home">AP</a>
+ <ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about">Struggler</a></li>
+  <li><a href="#skills">Arsenal</a></li>
+  <li><a href="#projects">Campaigns</a></li>
+  <li><a href="#path">Road</a></li>
+  <li><a href="#contact">Hawks</a></li>
+ </ul>
+</nav>
+
+<main id="main">
+<section class="view" id="v-home" data-title="Home">
+ <div class="hero">
+  <svg class="sword" viewBox="0 0 220 1000" aria-hidden="true">
+   <defs><linearGradient id="st" x1="0" x2="1"><stop offset="0" stop-color="#3b3f44"/><stop offset=".5" stop-color="#aab0b8"/><stop offset="1" stop-color="#2a2d31"/></linearGradient></defs>
+   <polygon points="78,20 142,0 150,60 146,640 130,668 90,668 74,640 70,70" fill="url(#st)" stroke="#0a0707" stroke-width="3"/>
+   <polygon points="74,200 62,214 74,230 70,330 80,350 74,380" fill="#0a0707"/>
+   <polygon points="146,420 156,438 146,458 150,520 142,540" fill="#0a0707"/>
+   <rect x="34" y="668" width="152" height="26" fill="#241a19" stroke="#8b929a" stroke-width="3"/>
+   <rect x="98" y="694" width="24" height="210" fill="#3a1b17" stroke="#0a0707" stroke-width="3"/>
+   <circle cx="110" cy="926" r="22" fill="#241a19" stroke="#8b929a" stroke-width="3"/>
+   <path d="M96 120 Q92 200 98 260 M120 330 Q124 400 118 470" stroke="#a3101a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </svg>
+  <svg class="brand" viewBox="0 0 100 100" role="img" aria-label="Brand emblem">
+   <g fill="none" stroke="#a3101a" stroke-width="5" stroke-linecap="round">
+    <circle cx="50" cy="50" r="42" stroke-width="3" opacity=".6"/><path d="M50 10 L50 90"/><path d="M28 34 Q50 22 72 34"/><path d="M26 66 Q50 80 74 66"/><path d="M32 48 Q50 40 68 48" stroke="#e2531f"/>
+   </g>
+  </svg>
+  <h1>Abhishek Pal</h1>
+  <p class="role">Blockchain Developer</p>
+  <p class="tag">A BCA student with a sword too big for him, and every intention of learning to swing it.</p>
+  <div class="row"><a class="btn" href="#projects">See my campaigns</a><a class="btn" href="#contact">Join the Hawks</a></div>
+  <button class="behelit" id="behelit" aria-pressed="false" aria-label="Toggle the Eclipse">
+   <svg viewBox="0 0 80 110" aria-hidden="true">
+    <defs><radialGradient id="bg" cx=".4" cy=".35"><stop offset="0" stop-color="#e2531f"/><stop offset=".6" stop-color="#a3101a"/><stop offset="1" stop-color="#2a0306"/></radialGradient></defs>
+    <ellipse cx="40" cy="55" rx="33" ry="50" fill="url(#bg)" stroke="#0a0707" stroke-width="3"/>
+    <path d="M20 36 Q28 30 36 38 M44 38 Q52 30 60 36 M26 76 Q40 90 54 76 M40 44 L40 70" stroke="#0a0707" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+   </svg>
+   <span id="beLabel">Touch the Behelit. Trigger the Eclipse.</span>
+  </button>
+ </div>
+</section>
+
+<section class="view" id="v-about" data-title="The Struggler" hidden>
+ <h2>The Struggler</h2>
+ <div class="about">
+  <div>
+   <p class="scar">I did not begin with talent. I began with a stubborn will and a blade I could barely lift.</p>
+   <p>I am a second-year BCA student from Kanpur, learning to build on the blockchain. Every bug is a monster at the gate, every deployed contract is a victory taken with my own hands.</p>
+   <p>I don’t wait for fate to hand me a place among the great ones. I sharpen myself line by line, commit by commit, and I’m still standing.</p>
+  </div>
+  <ul class="facts">
+   <li><b>Name</b> Abhishek Pal</li>
+   <li><b>Role</b> Blockchain developer</li>
+   <li><b>Based in</b> Kanpur</li>
+   <li><b>Years at it</b> 1.5</li>
+   <li><b>Fuel</b> Calmness and coffee</li>
+  </ul>
+ </div>
+</section>
+
+<section class="view" id="v-skills" data-title="The Arsenal" hidden>
+ <h2>The Arsenal</h2>
+ <div class="skills">
+  <div class="skill"><span>Solidity</span><div class="bar"><i style="--w:75%"></i></div></div>
+  <div class="skill"><span>JavaScript</span><div class="bar"><i style="--w:80%"></i></div></div>
+  <div class="skill"><span>Ethers.js / Web3</span><div class="bar"><i style="--w:68%"></i></div></div>
+  <div class="skill"><span>Python</span><div class="bar"><i style="--w:72%"></i></div></div>
+  <div class="skill"><span>React</span><div class="bar"><i style="--w:65%"></i></div></div>
+  <div class="skill"><span>SQL</span><div class="bar"><i style="--w:62%"></i></div></div>
+ </div>
+</section>
+
+<section class="view" id="v-projects" data-title="Campaigns" hidden>
+ <h2>Campaigns</h2>
+ <div class="cards">
+  <article class="card">
+   <h3>Library Management System</h3><small>Python · SQLite</small>
+   <p>Add books, issue them to members with a due date, and calculate late fees on return. Built to learn clean database design and real-world rules.</p>
+   <details><summary>Open the code</summary>
+<pre id="code1">import sqlite3
+from datetime import date, timedelta
+
+db = sqlite3.connect("library.db")
+db.execute("""CREATE TABLE IF NOT EXISTS books(
+    id INTEGER PRIMARY KEY, title TEXT, author TEXT,
+    issued_to TEXT, due TEXT)""")
+
+def add_book(title, author):
+    db.execute("INSERT INTO books(title, author) VALUES (?, ?)",
+               (title, author))
+    db.commit()
+
+def issue_book(book_id, member, days=14):
+    due = (date.today() + timedelta(days=days)).isoformat()
+    cur = db.execute(
+        "UPDATE books SET issued_to=?, due=? "
+        "WHERE id=? AND issued_to IS NULL", (member, due, book_id))
+    db.commit()
+    return cur.rowcount == 1
+
+def return_book(book_id):
+    row = db.execute("SELECT due FROM books WHERE id=? "
+                     "AND issued_to IS NOT NULL", (book_id,)).fetchone()
+    if not row:
+        return 0
+    late = max(0, (date.today() - date.fromisoformat(row[0])).days)
+    db.execute("UPDATE books SET issued_to=NULL, due=NULL WHERE id=?",
+               (book_id,))
+    db.commit()
+    return late * 2  # fine in rupees</pre>
+    <div class="row"><button data-copy="code1">Copy code</button><a href="#">GitHub repo</a></div></details>
+  </article>
+  <article class="card">
+   <h3>Decentralized Voting DApp</h3><small>Solidity · Ethers.js</small>
+   <p>A smart contract where each wallet votes once and results live on-chain, so nobody can quietly change them.</p>
+   <details><summary>Open the code</summary>
+<pre id="code2">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Voting {
+    string[] public candidates;
+    mapping(uint => uint) public votes;
+    mapping(address => bool) public hasVoted;
+
+    constructor(string[] memory names) {
+        candidates = names;
+    }
+
+    function vote(uint id) external {
+        require(!hasVoted[msg.sender], "Already voted");
+        require(id &lt; candidates.length, "Bad candidate");
+        hasVoted[msg.sender] = true;
+        votes[id]++;
+    }
+
+    function winner() external view returns (string memory) {
+        uint best;
+        for (uint i = 1; i &lt; candidates.length; i++) {
+            if (votes[i] &gt; votes[best]) best = i;
+        }
+        return candidates[best];
+    }
+}</pre>
+    <div class="row"><button data-copy="code2">Copy code</button><a href="#">GitHub repo</a></div></details>
+  </article>
+ </div>
+</section>
+
+<section class="view" id="v-path" data-title="The Long Road" hidden>
+ <h2>The Long Road</h2>
+ <ol class="timeline">
+  <li><time>Current</time><h3>Undergraduate, BCA</h3><p>Second year. Building a foundation in computing while shipping blockchain projects on the side.</p></li>
+  <li><time>Previous</time><h3>The self-taught years</h3><p>I am expanding my self knowledge.</p></li>
+ </ol>
+</section>
+
+<section class="view contact" id="v-contact" data-title="Join the Hawks" hidden>
+ <h2>Join the Hawks</h2>
+ <p>Have a project, an internship, or a fight worth having? Send word. I answer every message.</p>
+ <div class="row c">
+  <a class="btn" href="mailto:you@example.com">Send a message</a>
+  <a class="btn" href="#">GitHub</a>
+  <a class="btn" href="#">LinkedIn</a>
+ </div>
+</section>
+</main>
+<footer>A fan-made homage to Berserk. Struggle on. © Abhishek Pal</footer>
+
+<script>
+(function(){
+ var body=document.body,views=['home','about','skills','projects','path','contact'],cur=null,busy=false,
+  rm=matchMedia('(prefers-reduced-motion: reduce)').matches,sl=document.getElementById('slash');
+ function show(id){
+  views.forEach(function(v){var e=document.getElementById('v-'+v);e.hidden=v!==id;e.classList.toggle('on',v===id)});
+  var e=document.getElementById('v-'+id);document.title=(id==='home'?'Abhishek Pal':e.dataset.title+' | Abhishek Pal');
+  document.querySelectorAll('nav li a').forEach(function(a){a.removeAttribute('aria-current');if(a.getAttribute('href')==='#'+id)a.setAttribute('aria-current','page')});
+  body.classList.remove('go-in');void body.offsetWidth;body.classList.add('go-in');
+  scrollTo(0,0);cur=id;
+ }
+ function route(){
+  var id=location.hash.slice(1);if(views.indexOf(id)<0)id='home';
+  if(id===cur)return;
+  if(cur===null||rm){show(id);return}
+  if(busy)return;busy=true;
+  document.getElementById('slashName').textContent=document.getElementById('v-'+id).dataset.title;
+  sl.classList.remove('go');void sl.offsetWidth;sl.classList.add('go');
+  setTimeout(function(){show(id)},470);
+  setTimeout(function(){sl.classList.remove('go');busy=false},980);
+ }
+ addEventListener('hashchange',route);route();
+ var bt=document.getElementById('behelit'),lab=document.getElementById('beLabel'),main=document.getElementById('main');
+ bt.addEventListener('click',function(){
+  var on=body.classList.toggle('eclipse');bt.setAttribute('aria-pressed',on);
+  lab.textContent=on?'The Eclipse has begun. Touch again to return.':'Touch the Behelit. Trigger the Eclipse.';
+  main.classList.remove('shake');void main.offsetWidth;main.classList.add('shake');
+ });
+ document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+   var t=document.getElementById(b.dataset.copy).textContent;
+   try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied'},function(){b.textContent='Select and copy'})}catch(e){b.textContent='Select and copy'}
+   setTimeout(function(){b.textContent='Copy code'},1800);
+  });
+ });
+ if(rm)return;
+ var c=document.getElementById('embers'),x=c.getContext('2d'),w,h,p=[];
+ function size(){w=c.width=innerWidth;h=c.height=innerHeight}size();addEventListener('resize',size);
+ for(var i=0;i<70;i++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.6,v:Math.random()*.9+.3,d:Math.random()*6});
+ (function loop(t){
+  x.clearRect(0,0,w,h);var hot=body.classList.contains('eclipse');
+  p.forEach(function(e){
+   e.y-=e.v*(hot?2:1);e.x+=Math.sin(t/900+e.d)*.5;if(e.y<-10){e.y=h+10;e.x=Math.random()*w}
+   x.beginPath();x.arc(e.x,e.y,e.r,0,6.283);x.fillStyle=hot?'rgba(255,120,40,.85)':'rgba(226,83,31,.55)';x.fill();
+  });
+  requestAnimationFrame(loop);
+ })(0);
+})();
+</script>
+</body>
+</html>
